@@ -34,6 +34,10 @@ function SearchBar() {
     console.log(books);
   }
 
+  function handleClear(event) {
+    setBooks(" ");
+  }
+
   function truncateDescription(description) {
     if (description) {
       if (description.length > 450) {
@@ -58,6 +62,7 @@ function SearchBar() {
                 name="title"
               ></input>
             </div>
+
             <div className="col-sm-2">
               <button
                 onClick={handleFormSubmit}
@@ -66,66 +71,87 @@ function SearchBar() {
               >
                 Search
               </button>
+
+              <button
+                onClick={handleClear}
+                className="btn btn-secondary"
+                style={{ marginLeft: "2px" }}
+              >
+                Clear
+              </button>
             </div>
           </div>
         </div>
       </form>
       <div>
         {books.totalItems > 0 ? (
-          <div className="container text-center mt-3">
+          <div className="container ">
             <div className="row justify-content-center">
-              {books.items.map((book) => (
-                <div
-                  key={book.id}
-                  className="card bg-light m-1"
-                  style={{ width: "30%" }}
-                >
-                  <h3 className="card-title m-2">
-                    <strong>{book.volumeInfo.title}</strong>
-                  </h3>
-                  {book.volumeInfo.imageLinks ? (
-                    <img
-                      src={book.volumeInfo.imageLinks.thumbnail}
-                      className="card-img-top"
-                      alt="..."
-                      style={{ height: "28rem" }}
-                    ></img>
-                  ) : (
-                    <div></div>
-                  )}
-                  <div className="card-body">
-                    <p className="card-text">
-                      {truncateDescription(book.volumeInfo.description)}
-                    </p>
-                    <a
-                      className="btn btn-primary m-1"
-                      href={book.volumeInfo.infoLink}
-                    >
-                      Details
-                    </a>
-                    <button
-                      className="btn btn-primary m-1"
-                      onClick={(e) => {
-                        saveBook(
-                          book.volumeInfo.title,
-                          book.volumeInfo.authors,
-                          book.volumeInfo.description,
-                          book.volumeInfo.imageLinks.thumbnail,
-                          book.volumeInfo.infoLink
-                        );
-                        e.target.setAttribute("disabled", "true");
-                        e.target.textContent = "Saved!";
-                      }}
-                    >
-                      Save
-                    </button>
-                  </div>
-                </div>
-              ))}
+              <table className="table table-hover" style={{ color: "gray" }}>
+                <thead>
+                  <tr>
+                    <th>Book image</th>
+                    <th>Book Name</th>
+                    <th>Description</th>
+                    <th>Details Link</th>
+                    <th>Save Book</th>
+                  </tr>
+                </thead>
+
+                {books.items.map((book) => (
+                  <tbody>
+                    <tr key={book.id}>
+                      <td>
+                        <img
+                          alt=""
+                          src={book.volumeInfo.imageLinks.thumbnail}
+                          style={{
+                            border: "1px solid #ddd",
+                            borderRadius: "4px",
+                            padding: "5px",
+                            width: "150px",
+                          }}
+                        />
+                      </td>
+                      <td>{book.volumeInfo.title}</td>
+                      <td>
+                        {truncateDescription(book.volumeInfo.description)}
+                      </td>
+                      <td>
+                        {" "}
+                        <a
+                          className="btn btn-primary m-1"
+                          href={book.volumeInfo.infoLink}
+                        >
+                          Details
+                        </a>
+                      </td>
+                      <td>
+                        <button
+                          className="btn btn-primary m-1"
+                          onClick={(e) => {
+                            saveBook(
+                              book.volumeInfo.title,
+                              book.volumeInfo.authors,
+                              book.volumeInfo.description,
+                              book.volumeInfo.imageLinks.thumbnail,
+                              book.volumeInfo.infoLink
+                            );
+                            e.target.setAttribute("disabled", "true");
+                            e.target.textContent = "Saved!";
+                          }}
+                        >
+                          Save
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                ))}
+              </table>
             </div>
           </div>
         ) : (
-          <div className="text-center m-5">No results to display</div>
+          <div></div>
         )}
       </div>
     </>
