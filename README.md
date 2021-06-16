@@ -22,8 +22,8 @@ Utilize the link to the deployed site and start searching for a good book to rea
 
 Screenshots of working website:
 
-<img src="https://github.com/dorrianweber/healthyHabits/blob/main/client/public/images/HealthyHabits1.JPG?raw=true" width=700> <br />
-<img src="https://github.com/dorrianweber/healthyHabits/blob/main/client/public/images/HealthyHabits2.JPG?raw=true" width=700> <br />
+<img src="https://github.com/reybrac/Book-list/blob/main/client/public/images/booklist1.JPG?raw=true" width=700> <br />
+<img src="https://github.com/reybrac/Book-list/blob/main/client/public/images/booklist2.JPG?raw=true" width=700> <br />
 
 ## Usage information:
 
