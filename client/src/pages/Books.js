@@ -38,47 +38,6 @@ function Books() {
       return description;
     }
   }
-  // const [formObject, setFormObject] = useState({});
-
-  // // Load all books and store them with setBooks
-  // useEffect(() => {
-  //   loadBooks();
-  // }, []);
-
-  // // Loads all books and sets them to books
-  // function loadBooks() {
-  //   API.getBooks()
-  //     .then((res) => setBooks(res.data))
-  //     .catch((err) => console.log(err));
-  // }
-
-  // // Deletes a book from the database with a given id, then reloads books from the db
-  // function deleteBook(id) {
-  //   API.deleteBook(id)
-  //     .then((res) => loadBooks())
-  //     .catch((err) => console.log(err));
-  // }
-
-  // // Handles updating component state when the user types into the input field
-  // function handleInputChange(event) {
-  //   const { name, value } = event.target;
-  //   setFormObject({ ...formObject, [name]: value });
-  // }
-
-  // // When the form is submitted, use the API.saveBook method to save the book data
-  // // Then reload books from the database
-  // function handleFormSubmit(event) {
-  //   event.preventDefault();
-  //   if (formObject.title && formObject.author) {
-  //     API.saveBook({
-  //       title: formObject.title,
-  //       author: formObject.author,
-  //       synopsis: formObject.synopsis,
-  //     })
-  //       .then((res) => loadBooks())
-  //       .catch((err) => console.log(err));
-  //   }
-  // }
 
   return (
     <Container fluid>
@@ -86,101 +45,67 @@ function Books() {
         <h4>Search for a Book</h4>
         <SearchBar />
       </div>
+      <hr></hr>
       <div>
         {books.length ? (
-          <div className="container text-center">
+          <div
+            className="container text-center"
+            style={{ marginTop: "50px", backgroundColor: "lightGray" }}
+          >
             <div className="row justify-content-center">
-              {books.map((book) => (
-                <div
-                  key={book.link}
-                  className="card bg-light m-1"
-                  style={{ width: "30%" }}
-                >
-                  <h3 className="card-title m-2">
-                    <strong>{book.title}</strong>
-                  </h3>
-                  <img
-                    src={book.image}
-                    className="card-img-top"
-                    alt="..."
-                    style={{ height: "28rem" }}
-                  ></img>
-                  <div className="card-body">
-                    <p className="card-text">
-                      {truncateDescription(book.description)}
-                    </p>
-                    <a className="btn btn-primary m-1" href={book.link}>
-                      Details
-                    </a>
-                    <button
-                      className="btn btn-primary m-1"
-                      onClick={() => deleteBook(book._id)}
-                    >
-                      Remove
-                    </button>
-                  </div>
-                </div>
-              ))}
+              <h3>Saved Books</h3>
+              <table className="table table-hover" style={{ color: "gray" }}>
+                <thead>
+                  <tr>
+                    <th>Book image</th>
+                    <th>Book Name</th>
+                    <th>Description</th>
+                    <th>Details Link</th>
+                    <th>Delete Book</th>
+                  </tr>
+                </thead>
+                {books.map((book) => (
+                  <tbody>
+                    <tr>
+                      <td>
+                        <img
+                          alt=""
+                          src={book.image}
+                          style={{
+                            border: "1px solid #ddd",
+                            borderRadius: "4px",
+                            padding: "5px",
+                            width: "150px",
+                          }}
+                        />
+                      </td>
+                      <td>{book.title}</td>
+                      <td>{truncateDescription(book.description)}</td>
+                      <td>
+                        {" "}
+                        <a className="btn btn-primary m-1" href={book.link}>
+                          Details
+                        </a>
+                      </td>
+                      <td>
+                        <button
+                          className="btn btn-primary m-1"
+                          onClick={() => deleteBook(book._id)}
+                        >
+                          Remove
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                ))}
+              </table>
             </div>
           </div>
         ) : (
-          <h3>
-            No books have been saved, try <a href="/search">searching</a> for a
-            book to add!
-          </h3>
+          <h3>No books have been saved, try searching for a book to add!</h3>
         )}
+        <div></div>
       </div>
-      {/* <Row>
-        <Col size="md-6">
-          <Jumbotron>
-            <h1>What Books Should I Read?</h1>
-          </Jumbotron>
-          <form>
-            <Input
-              onChange={handleInputChange}
-              name="title"
-              placeholder="Title (required)"
-            />
-            <Input
-              onChange={handleInputChange}
-              name="author"
-              placeholder="Author (required)"
-            />
-            <TextArea
-              onChange={handleInputChange}
-              name="synopsis"
-              placeholder="Synopsis (Optional)"
-            />
-            <FormBtn
-              disabled={!(formObject.author && formObject.title)}
-              onClick={handleFormSubmit}
-            >
-              Submit Book
-            </FormBtn>
-          </form>
-        </Col>
-        <Col size="md-6 sm-12">
-          <Jumbotron>
-            <h1>Books On My List</h1>
-          </Jumbotron>
-          {books.length ? (
-            <List>
-              {books.map((book) => (
-                <ListItem key={book._id}>
-                  <Link to={"/books/" + book._id}>
-                    <strong>
-                      {book.title} by {book.author}
-                    </strong>
-                  </Link>
-                  <DeleteBtn onClick={() => deleteBook(book._id)} />
-                </ListItem>
-              ))}
-            </List>
-          ) : (
-            <h3>No Results to Display</h3>
-          )}
-        </Col>
-      </Row> */}
     </Container>
   );
 }
