@@ -40,66 +40,59 @@ function Detail() {
 
   return (
     <Container fluid>
-      <div>
-        {books.length ? (
-          <div
-            className="container text-center"
-            style={{ marginTop: "50px", backgroundColor: "lightGray" }}
-          >
-            <div className="row justify-content-center">
-              <h3>Saved Books</h3>
-              <table className="table table-hover" style={{ color: "gray" }}>
-                <thead>
-                  <tr>
-                    <th>Book image</th>
-                    <th>Book Name</th>
-                    <th>Description</th>
-                    <th>Details Link</th>
-                    <th>Delete Book</th>
-                  </tr>
-                </thead>
-                {books.map((book) => (
-                  <tbody>
-                    <tr>
-                      <td>
-                        <img
-                          alt=""
-                          src={book.image}
-                          style={{
-                            border: "1px solid #ddd",
-                            borderRadius: "4px",
-                            padding: "5px",
-                            width: "150px",
-                          }}
-                        />
-                      </td>
-                      <td>{book.title}</td>
-                      <td>{truncateDescription(book.description)}</td>
-                      <td>
-                        {" "}
-                        <a className="btn btn-primary m-1" href={book.link}>
-                          Details
-                        </a>
-                      </td>
-                      <td>
-                        <button
-                          className="btn btn-primary m-1"
-                          onClick={() => deleteBook(book._id)}
-                        >
-                          Remove
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                ))}
-              </table>
-            </div>
-          </div>
-        ) : (
-          <h3>No books have been saved, try searching for a book to add!</h3>
-        )}
-        <div></div>
-      </div>
+      {books.length ? (
+        <div className="container text-center" style={{ marginTop: "50px" }}>
+          <h3>Saved Books</h3>
+          <table className="table table-hover" style={{ color: "gray" }}>
+            <thead>
+              <tr>
+                <th>Book image</th>
+                <th>Book Name</th>
+                <th>Description</th>
+                <th>Details Link</th>
+                <th>Delete Book</th>
+              </tr>
+            </thead>
+            {books.map((book) => (
+              <tbody>
+                <tr>
+                  <td>
+                    <img
+                      alt=""
+                      src={book.image}
+                      style={{
+                        border: "1px solid #ddd",
+                        borderRadius: "4px",
+                        padding: "5px",
+                        width: "150px",
+                      }}
+                    />
+                  </td>
+                  <td>{book.title}</td>
+                  <td>{truncateDescription(book.description)}</td>
+                  <td>
+                    {" "}
+                    <a className="btn btn-primary m-1" href={book.link}>
+                      Details
+                    </a>
+                  </td>
+                  <td>
+                    <button
+                      className="btn btn-primary m-1"
+                      onClick={() => deleteBook(book._id)}
+                    >
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            ))}
+          </table>
+        </div>
+      ) : (
+        <h3>No books have been saved, try searching for a book to add!</h3>
+      )}
+      <div></div>
     </Container>
   );
 }

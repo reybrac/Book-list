@@ -16,6 +16,11 @@ function Books() {
         <h4>Search for a Book</h4>
         <SearchBar />
       </div>
+      <br></br>
+      <p style={{ textAlign: "center" }}>
+        "He that loves reading has everything within his reach." - William
+        Godwin{" "}
+      </p>
       <hr />
     </Container>
   );

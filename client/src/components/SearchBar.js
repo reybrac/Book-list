@@ -51,37 +51,30 @@ function SearchBar() {
 
   return (
     <>
-      <form>
-        <div className="container">
-          <div className="row">
-            <div className="col-sm-10">
-              <input
-                className="form control"
-                onChange={handleInputChange}
-                style={{ width: "100%", height: "100%" }}
-                name="title"
-              ></input>
-            </div>
-
-            <div className="col-sm-2">
-              <button
-                onClick={handleFormSubmit}
-                className="btn btn-success"
-                style={{ float: "right" }}
-              >
-                Search
-              </button>
-
-              <button
-                onClick={handleClear}
-                className="btn btn-secondary"
-                style={{ marginLeft: "2px" }}
-              >
-                Clear
-              </button>
-            </div>
-          </div>
+      <form className="form">
+        <div className=" ">
+          <input
+            // className="form control"
+            onChange={handleInputChange}
+            style={{ width: "100%", height: "100%" }}
+            name="title"
+          ></input>
         </div>
+        <br />
+        <button
+          onClick={handleFormSubmit}
+          className="btn btn-success"
+          // style={{ float: "right" }}
+        >
+          Search
+        </button>{" "}
+        <button
+          onClick={handleClear}
+          className="btn btn-secondary"
+          // style={{ float: "right" }}
+        >
+          Clear
+        </button>
       </form>
       <div>
         {books.totalItems > 0 ? (

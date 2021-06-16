@@ -20,6 +20,12 @@ A React application to look up books utilizing Google books API. The user can se
 
 Utilize the link to the deployed site and start searching for a good book to read.
 
+Copy the link and paste it to your browser to install and deploy it.
+https://healthy-habits-1.herokuapp.com/profile
+
+Github repository:
+https://github.com/reybrac/Book-list
+
 Screenshots of working website:
 
 <img src="https://github.com/reybrac/Book-list/blob/main/client/public/images/booklist1.JPG?raw=true" width=700> <br />
