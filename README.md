@@ -20,6 +20,11 @@ A React application to look up books utilizing Google books API. The user can se
 
 Utilize the link to the deployed site and start searching for a good book to read.
 
+Screenshots of working website:
+
+<img src="https://github.com/dorrianweber/healthyHabits/blob/main/client/public/images/HealthyHabits1.JPG?raw=true" width=700> <br />
+<img src="https://github.com/dorrianweber/healthyHabits/blob/main/client/public/images/HealthyHabits2.JPG?raw=true" width=700> <br />
+
 ## Usage information:
 
 Help a user look for books, save books to their list, and delete the books once they have been read.

@@ -16,9 +16,6 @@ function App() {
           <Route exact path={["/", "/books"]}>
             <Books />
           </Route>
-          <Route exact path="/books/:id">
-            <Detail />
-          </Route>
           <Route exact path="/detail">
             <Detail />
           </Route>
